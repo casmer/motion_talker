@@ -9,7 +9,7 @@ const byte volUpPin = 2;
 const byte volDownPin = 3;
 volatile bool movement = false;
 volatile bool no_move=false;
-volatile uint8_t volume=20;
+volatile uint8_t volume=25;
 
 int delay_counter=1;
 int file_number=1;
@@ -73,7 +73,7 @@ void setup() {
   player.setVolume(volume); // Set Volume to 100%
 
   pinMode(interruptPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), movement_interrupt, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), movement_interrupt, RISING);
 
   pinMode(volUpPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(volUpPin), vol_up_interrupt, FALLING);
